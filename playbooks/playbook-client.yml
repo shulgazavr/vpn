@@ -1,0 +1,19 @@
+- hosts: client
+  become: true
+  tasks:
+    - name: INSTALL EPEL REPO PACKAGE FROM STANDARD REPO
+      yum:
+        name: epel-release    
+        state: present
+
+    - name: INSTALL OPENVPN AND UTILS
+      yum:
+        name: 
+          - openvpn
+          - mc
+        state: present
+
+    - name: COPY client.conf 
+      copy:
+        src: client/client.conf
+        dest: /etc/openvpn/client/
